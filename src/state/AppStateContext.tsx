@@ -1,4 +1,4 @@
-import React, { createContext, useReducer, useContext } from 'react'
+import React, { createContext, useReducer, useContext, useEffect } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 import { findItemIndexById } from '../utils/findItemIndexById'
 import { moveItem } from '../utils/moveItem'
@@ -8,7 +8,7 @@ import { DragItem } from '../components/DragItem'
 
 export interface AppState {
   lists: List[]
-  draggedItem?: DragItem 
+  draggedItem?: DragItem
 }
 
 interface Task {
@@ -29,28 +29,6 @@ interface AppStateContextProps {
   dispatch: (action: Action) => void
 }
 
-//Define the application data with AppState type.
-
-const appData: AppState = {
-  lists: [
-    {
-      id: '0',
-      text: 'To Do',
-      tasks: [{ id: 'c0', text: 'Generate app scaffold' }],
-    },
-    {
-      id: '1',
-      text: 'In Progress',
-      tasks: [{ id: 'c1', text: 'Learn Typescript' }],
-    },
-    {
-      id: '2',
-      text: 'Done',
-      tasks: [{ id: 'c2', text: 'Begin to use static typing' }],
-    },
-  ],
-}
-
 //Create context using createContext method
 
 const AppStateContext = createContext<AppStateContextProps>(
@@ -61,7 +39,13 @@ const AppStateContext = createContext<AppStateContextProps>(
 
 export const AppStateProvider = ({ children }: React.PropsWithChildren<{}>) => {
   //Provide dispatch through the context
-  const [state, dispatch] = useReducer(appStateReducer, appData)
+  const [state, dispatch] = useReducer(
+    appStateReducer, JSON.parse(localStorage.getItem('items') || '{}')
+  )
+  
+  useEffect(() => {
+    localStorage.setItem('items', JSON.stringify(state))
+  }, [state])
 
   return (
     <AppStateContext.Provider value={{ state, dispatch }}>
