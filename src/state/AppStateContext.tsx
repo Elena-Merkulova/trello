@@ -29,6 +29,20 @@ interface AppStateContextProps {
   dispatch: (action: Action) => void
 }
 
+//Used only if localStorage is empty
+const appData: AppState = {
+  lists: [],
+}
+
+const init = () => {
+  let preloadedState = localStorage.getItem('items')
+  if (preloadedState) {
+    return JSON.parse(preloadedState)
+  } else {
+    return appData
+  }
+}
+
 //Create context using createContext method
 
 const AppStateContext = createContext<AppStateContextProps>(
@@ -39,10 +53,8 @@ const AppStateContext = createContext<AppStateContextProps>(
 
 export const AppStateProvider = ({ children }: React.PropsWithChildren<{}>) => {
   //Provide dispatch through the context
-  const [state, dispatch] = useReducer(
-    appStateReducer, JSON.parse(localStorage.getItem('items') || '{}')
-  )
-  
+  const [state, dispatch] = useReducer(appStateReducer, appData, init)
+
   useEffect(() => {
     localStorage.setItem('items', JSON.stringify(state))
   }, [state])
