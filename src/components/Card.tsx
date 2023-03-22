@@ -1,9 +1,10 @@
 import { useRef } from 'react'
 import { useDrop } from 'react-dnd'
 import { CardDragItem } from './DragItem'
-import { CardContainer } from '../styles'
+import { CardContainer, IconDelete } from '../styles'
 import { useAppState } from '../state/AppStateContext'
 import { useItemDrag } from '../utils/useItemDrag'
+
 
 interface CardProps {
   text: string
@@ -53,6 +54,10 @@ export const Card = ({ text, columnId, id, index, isPreview }: CardProps) => {
       ref={ref}
     >
       {text}
+      <IconDelete onClick={() => dispatch({
+      type: 'REMOVE_TASK',
+      payload: id,
+    })}/> 
     </CardContainer>
   )
 }

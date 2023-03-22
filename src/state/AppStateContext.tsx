@@ -109,6 +109,10 @@ type Action =
         targetColumn: string
       }
     }
+  | {
+    type: 'REMOVE_TASK'
+    payload: string
+  }
 
 //Define reducer
 
@@ -168,6 +172,13 @@ const appStateReducer = (state: AppState, action: Action): AppState => {
 
       return {
         ...state,
+      }
+    }
+    case 'REMOVE_TASK': {
+      state.lists.forEach(el => el.tasks.filter(task => task.id !== action.payload))
+      return {
+        ...state,
+        
       }
     }
     default: {

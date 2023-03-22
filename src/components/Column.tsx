@@ -7,6 +7,7 @@ import { Card } from './Card'
 import { useItemDrag } from '../utils/useItemDrag'
 import { DragItem } from './DragItem'
 import { isHidden } from '../utils/isHidden'
+import {AiFillDelete} from 'react-icons/ai'
 
 interface ColumnProps {
   text: string
@@ -74,7 +75,10 @@ export const Column = ({ text, index, id, isPreview }: ColumnProps) => {
       ref={ref}
       isHidden={isHidden(isPreview, state.draggedItem, 'COLUMN', id)}
     >
-      <ColumnTitle> {text} </ColumnTitle>
+      <ColumnTitle> 
+      {text} 
+      </ColumnTitle>
+      
       {state.lists[index].tasks.map((task, i) => (
         <Card
           id={task.id}

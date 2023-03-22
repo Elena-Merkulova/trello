@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { AiFillDelete } from 'react-icons/ai';
 
 export const AppContainer = styled.div`
 background-color: #3179ba;
@@ -16,17 +17,18 @@ font-weight: bold;
 `;
 
 export const CardContainer = styled.div`
+display: flex;
+justify-content: space-between;
 background-color: #ffffff;
 cursor: pointer;
 margin-bottom: 0.5rem;
-padding: 0.5rem 1rem;
+padding: 0.5rem;
 max-width: 300px;
 border-radius: 5px;
 box-shadow: #c6c6c8 0 1px 0 0;
 `;
 
 // Add new tasks and list Button
-
 
 type AddItemButtonProps = {
     dark? : boolean
@@ -91,8 +93,8 @@ min-height: 40px;
 margin-right: 20px;
 border-radius: 3px;
 padding: 8px 8px;
-flex-grow: 0
-`;
+flex-grow: 0;
+`
 
 //Custom dragging preview
 
@@ -105,3 +107,11 @@ position: fixed;
 z-index: 100;
 pointer-events: none;
 `
+
+export const IconDelete = styled(AiFillDelete)`
+font-size: 13px;
+color: #bebebe;
+cursor: pointer
+`
+
+
