@@ -176,21 +176,6 @@ const appStateReducer = (state: AppState, action: Action): AppState => {
         ...state,
       }
     }
-    // case 'REMOVE_TASK': {
-    //   const listIndex = findItemIndexById(
-    //     state.lists,
-    //     action.payload.taskId
-    //   )
-    //     state.lists[listIndex].tasks.filter(
-    //     (task) => task.id !== action.payload.taskId
-    //   )
-    //     return {
-
-    //       ...state,
-    //     }
-        
-      
-    //   }
     default: {
       return state
     }

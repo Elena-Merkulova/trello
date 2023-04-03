@@ -1,7 +1,7 @@
 import { useRef } from 'react'
 import { useDrop } from 'react-dnd'
 import { CardDragItem } from './DragItem'
-import { CardContainer, IconDelete } from '../styles'
+import { CardContainer } from '../styles'
 import { useAppState } from '../state/AppStateContext'
 import { useItemDrag } from '../utils/useItemDrag'
 
@@ -47,21 +47,11 @@ export const Card = ({ text, columnId, id, index, isPreview }: CardProps) => {
 
   drag(drop(ref))
 
-  // const handleDelete = (taskId: string) => {
-  //   dispatch({
-  //     type: 'REMOVE_TASK',
-  //     payload: {taskId: id},
-  //   })
-  // }
-
   return (
     <CardContainer
-      // isHidden={isHidden(isPreview, state.draggedItem, "CARD", id)}
-      // isPreview={isPreview}
       ref={ref}
     >
       {text}
-      {/* <IconDelete onClick={() => handleDelete(task.id)}/>  */}
     </CardContainer>
   )
 }
