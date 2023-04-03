@@ -2,9 +2,7 @@ import styled from 'styled-components';
 import { AiFillDelete } from 'react-icons/ai';
 
 export const AppContainer = styled.div`
-background-image: url('https://images.pexels.com/photos/11579902/pexels-photo-11579902.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
-background-repeat: no-repeat;
-background-size: cover;
+background-color: #185673;
 display: flex;
 align-items: flex-start;
 flex-direction: row;
