@@ -47,6 +47,13 @@ export const Card = ({ text, columnId, id, index, isPreview }: CardProps) => {
 
   drag(drop(ref))
 
+  // const handleDelete = (taskId: string) => {
+  //   dispatch({
+  //     type: 'REMOVE_TASK',
+  //     payload: {taskId: id},
+  //   })
+  // }
+
   return (
     <CardContainer
       // isHidden={isHidden(isPreview, state.draggedItem, "CARD", id)}
@@ -54,10 +61,7 @@ export const Card = ({ text, columnId, id, index, isPreview }: CardProps) => {
       ref={ref}
     >
       {text}
-      <IconDelete onClick={() => dispatch({
-      type: 'REMOVE_TASK',
-      payload: id,
-    })}/> 
+      {/* <IconDelete onClick={() => handleDelete(task.id)}/>  */}
     </CardContainer>
   )
 }

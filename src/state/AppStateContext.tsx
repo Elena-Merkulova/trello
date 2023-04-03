@@ -1,6 +1,6 @@
 import React, { createContext, useReducer, useContext, useEffect } from 'react'
 import { v4 as uuidv4 } from 'uuid'
-import { findItemIndexById } from '../utils/findItemIndexById'
+import {findItemIndexById} from '../utils/findItemIndexById'
 import { moveItem } from '../utils/moveItem'
 import { DragItem } from '../components/DragItem'
 
@@ -109,10 +109,12 @@ type Action =
         targetColumn: string
       }
     }
-  | {
-    type: 'REMOVE_TASK'
-    payload: string
-  }
+  // | {
+  //     type: 'REMOVE_TASK'
+  //     payload: {
+  //       taskId: string
+  //     }
+  //   }
 
 //Define reducer
 
@@ -174,15 +176,24 @@ const appStateReducer = (state: AppState, action: Action): AppState => {
         ...state,
       }
     }
-    case 'REMOVE_TASK': {
-      state.lists.forEach(el => el.tasks.filter(task => task.id !== action.payload))
-      return {
-        ...state,
+    // case 'REMOVE_TASK': {
+    //   const listIndex = findItemIndexById(
+    //     state.lists,
+    //     action.payload.taskId
+    //   )
+    //     state.lists[listIndex].tasks.filter(
+    //     (task) => task.id !== action.payload.taskId
+    //   )
+    //     return {
+
+    //       ...state,
+    //     }
         
-      }
-    }
+      
+    //   }
     default: {
       return state
     }
   }
 }
+

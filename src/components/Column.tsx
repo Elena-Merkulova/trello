@@ -7,7 +7,6 @@ import { Card } from './Card'
 import { useItemDrag } from '../utils/useItemDrag'
 import { DragItem } from './DragItem'
 import { isHidden } from '../utils/isHidden'
-import {AiFillDelete} from 'react-icons/ai'
 
 interface ColumnProps {
   text: string
